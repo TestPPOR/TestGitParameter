@@ -8,19 +8,17 @@ pipeline {
                 deleteDir()
             }
         }
-        stages {
-            stage('Process start') {
-                steps {
-                    sh "echo GIT PARAMETER PROCESS SUCCESS"
-                }
+        stage('Process start') {
+            steps {
+                sh "echo GIT PARAMETER PROCESS SUCCESS"
             }
         }
         stage('Ls work dir') {
-        steps {
-            sh '''
-                ls -la                  
-            '''
-        }
+            steps {
+                sh '''
+                    ls -la                  
+                '''
+            }
         }
     }
 }
