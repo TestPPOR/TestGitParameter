@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Hello') {
             steps {
-                sh 'Process start Git Parameter'
+                echo "Process start Git Parameter"
             }
         }
     }
