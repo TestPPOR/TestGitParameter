@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('Process start') {
             steps {
-                echo "Process start Git Parameter"
+                sh "echo GIT PARAMETER PROCESS SUCCESS"
             }
         }
     }
