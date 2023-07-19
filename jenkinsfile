@@ -1,11 +1,37 @@
-t pipeline {
-    agent any
+pipeline {
+    agent { label 'node1'}
 
-    stages {
-        stage('Hello') {
+    stages{
+        stage('Create') {
             steps {
-                echo 'Test'
+                script{
+                    if (isUnix()) {
+                        sh 'java -version'
+                        sh 'mkdir Folder_1'
+                        sh 'echo "File_1" > File_1.txt'
+                        sh 'echo "File_3" > Folder_1/File_3.txt'
+                    } else {
+                        bat('echo "File_1" > File_1.txt')
+                        bat('echo "File_3" > Folder_1/File_3.txt')
+                    }
+
+                }
             }
         }
+        stage('Archive') {
+            steps{
+                archiveArtifacts '**/*.txt'
+            }
+        }
+        stage('Clean files') {
+            steps{
+                script{
+                    if (isUnix()) {
+                        sh 'rm -r *'
+                    }
+                }
+            }
+        }
+
     }
 }
