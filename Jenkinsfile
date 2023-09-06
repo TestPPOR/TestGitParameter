@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    parameter {
+    parameters {
         password description: 'Password1', name: 'MYPASSWORD1'
         password description: 'Password2', name: 'MYPASSWORD2'
     }
